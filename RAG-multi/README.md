@@ -1,5 +1,5 @@
 # 探索不同组合的RAG方法在小说人物性格总结任务上的效果
-
+```
 !pip install openai
 !pip install faiss-gpu  # 或 faiss-cpu
 !pip install chromadb
@@ -13,6 +13,7 @@
 ! pip install langchain_chroma
 
 !pip install langchain_huggingface
+```
 
 | **实验编号** | **嵌入模型**        | **检索方式**               | **是否使用 LLM Rank** |
 |--------------|---------------------|----------------------------|-----------------------|

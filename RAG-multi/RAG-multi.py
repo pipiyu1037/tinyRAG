@@ -13,7 +13,7 @@ import re
 openai.api_type = "azure"
 openai.api_base = "https://hkust.azure-api.net"
 openai.api_version = "2023-05-15"
-openai.api_key = "1b09b2d1b9754ca5b0910328f6fea9a0"
+openai.api_key = "Your OpenAI API Key"
 
 
 class AzureEmbeddingFunction:

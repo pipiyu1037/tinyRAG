@@ -8,12 +8,13 @@ from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings  # 修正导入
 import numpy as np
 import re
+import time
 
 # OpenAI Configuration
 openai.api_type = "azure"
 openai.api_base = "https://hkust.azure-api.net"
 openai.api_version = "2023-05-15"
-openai.api_key = "Your OpenAI API Key"
+openai.api_key = "Your_OpenAI_API_Key"
 
 
 class AzureEmbeddingFunction:
@@ -145,6 +146,7 @@ class RAGWithHybrid:
         ]
 
         try:
+            time.sleep(2)  # 添加延迟，避免超过速率限制
             response = openai.ChatCompletion.create(
                 engine="gpt-35-turbo",
                 messages=messages,
@@ -211,6 +213,7 @@ class RAGWithHybrid:
         ]
 
         try:
+            time.sleep(2)  # 添加延迟，避免超过速率限制
             response = openai.ChatCompletion.create(
                 engine="gpt-35-turbo",
                 messages=messages,
@@ -236,8 +239,11 @@ if __name__ == "__main__":
 
     print("Starting experiments...")
 
+    experiment_count = 0
     for method in methods:
         for rank in ranks:
+            experiment_count += 1
+            print(f"\nExperiment {experiment_count}")
             if method == "bm25":  # BM25 与 embedding_type 无关
                 print(f"\nMethod: {method.upper()}, LLM Rank: {rank}")
                 try:

@@ -242,9 +242,9 @@ if __name__ == "__main__":
     experiment_count = 0
     for method in methods:
         for rank in ranks:
-            experiment_count += 1
-            print(f"\nExperiment {experiment_count}")
             if method == "bm25":  # BM25 与 embedding_type 无关
+                experiment_count += 1
+                print(f"\nExperiment {experiment_count}")
                 print(f"\nMethod: {method.upper()}, LLM Rank: {rank}")
                 try:
                     rag = RAGWithHybrid(resource_path)
@@ -255,6 +255,8 @@ if __name__ == "__main__":
                     print(f"[Error] An error occurred for method: {method}, rank: {rank}. Error: {e}")
             else:  # 其他方法需要区分 embedding_type
                 for embedding_type in embedding_types:
+                    experiment_count += 1
+                    print(f"\nExperiment {experiment_count}")
                     print(f"\nEmbedding Type: {embedding_type.upper()}, Method: {method.upper()}, LLM Rank: {rank}")
                     try:
                         rag = RAGWithHybrid(resource_path)
